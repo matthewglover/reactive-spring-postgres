@@ -1,0 +1,58 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.0.M3'
+    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.31'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.3.31'
+}
+
+group = 'com.matthewglover'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+wrapper {
+    gradleVersion = '5.2.1'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/snapshot' }
+    maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation "io.projectreactor.kotlin:reactor-kotlin-extensions:1.0.0.M1"
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
+
+    // Testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.4.0'
+
+    // Reactive Postgres
+    implementation 'org.springframework.data:spring-data-r2dbc:1.0.0.M1'
+    implementation 'io.r2dbc:r2dbc-postgresql:1.0.0.M6'
+
+    // Required for Liquibase
+    runtime 'org.liquibase:liquibase-core'
+    runtime 'org.springframework.boot:spring-boot-starter-jdbc'
+    runtime 'org.postgresql:postgresql'
+}
+
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjsr305=strict']
+        jvmTarget = '1.8'
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjsr305=strict']
+        jvmTarget = '1.8'
+    }
+}

@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: changelog/001-create-people-schema.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: changelog/002-add-unique-constraint-to-person-name.yaml
+      relativeToChangelogFile: true

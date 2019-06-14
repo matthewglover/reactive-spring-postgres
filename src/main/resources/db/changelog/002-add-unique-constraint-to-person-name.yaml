@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: matthewglover
+      changes:
+        - addUniqueConstraint:
+            tableName: people
+            columnNames: name
+            constraintName: unique-name
